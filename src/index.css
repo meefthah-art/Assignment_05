@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Single source of truth for the brand gradient.
+  Update this one variable to re-theme the whole site
+  (brand name, hero highlight, primary buttons all read from it).
+*/
+:root {
+  --brand-gradient: linear-gradient(90deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+}
+
+@layer components {
+  .gradient-text {
+    background-image: var(--brand-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-bg {
+    background-image: var(--brand-gradient);
+  }
+
+  .btn-gradient {
+    @apply btn border-none text-white;
+    background-image: var(--brand-gradient);
+  }
+
+  .btn-gradient:hover {
+    filter: brightness(1.08);
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-base-100 text-base-content;
+}
