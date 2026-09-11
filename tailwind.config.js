@@ -1,22 +1,10 @@
+import daisyui from "daisyui";
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ["./index.html", "./src/**/*.{js,jsx}"],
   theme: {
-    extend: {
-      colors: {
-        // Single source of truth for the brand gradient stops.
-        // Change these three values to re-theme the entire UI.
-        brand: {
-          start: "#f97316", // orange
-          mid: "#ec4899", // pink
-          end: "#8b5cf6", // violet
-        },
-      },
-      backgroundImage: {
-        "brand-gradient":
-          "linear-gradient(90deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%)",
-      },
-    },
+    extend: {},
   },
   daisyui: {
     themes: [
@@ -37,5 +25,5 @@ export default {
       },
     ],
   },
-  plugins: [require("daisyui")],
+  plugins: [daisyui],
 };
