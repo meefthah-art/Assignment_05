@@ -13,6 +13,7 @@
 */
 :root {
   --brand-gradient: linear-gradient(90deg, #ff5722 0%, #d81b7e 50%, #7c3aed 100%);
+  --accent-gradient: linear-gradient(90deg, #ec4899 0%, #8b5cf6 100%);
 }
 
 * {
@@ -22,6 +23,13 @@
 @layer components {
   .gradient-text {
     background-image: var(--brand-gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .gradient-text-accent {
+    background-image: var(--accent-gradient);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;

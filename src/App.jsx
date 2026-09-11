@@ -37,41 +37,36 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-white">
       <Navbar />
       <main className="flex-1">
         <Hero />
 
         <section
           id="technologies"
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24"
+          className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 pb-24"
         >
-          <div className="mb-8">
-            <h2 className="text-2xl sm:text-3xl font-bold">
-              Explore <span className="gradient-text">Technologies</span>
+          <div className="mb-8 sm:mb-10">
+            <h2 className="text-2xl sm:text-[36px] font-extrabold text-slate-900">
+              Explore the <span className="gradient-text-accent">Technologies</span>
             </h2>
-            <p className="text-base-content/60 mt-2 max-w-2xl">
-              Pick the tools that fit your next project and build a stack
-              you can come back to anytime.
+            <p className="text-slate-500 mt-2 max-w-2xl">
+              Pick one technology per category to build your ideal stack.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-[1fr_320px] gap-8 items-start">
-            <div className="order-2 lg:order-1">
-              <TechGrid
-                technologies={technologies}
-                isLoading={isLoading}
-                stackIds={stackIds}
-                onAdd={handleAddToStack}
-              />
-            </div>
-            <div className="order-1 lg:order-2">
-              <YourStack
-                stack={stack}
-                onRemove={handleRemoveFromStack}
-                onRemoveAll={handleRemoveAll}
-              />
-            </div>
+            <TechGrid
+              technologies={technologies}
+              isLoading={isLoading}
+              stackIds={stackIds}
+              onAdd={handleAddToStack}
+            />
+            <YourStack
+              stack={stack}
+              onRemove={handleRemoveFromStack}
+              onRemoveAll={handleRemoveAll}
+            />
           </div>
         </section>
       </main>
