@@ -10,9 +10,7 @@ export default function TechGrid({
     return (
       <div className="flex flex-col items-center justify-center py-24 gap-4">
         <span className="loading loading-spinner loading-lg text-secondary" />
-        <p className="text-base-content/60 text-sm">
-          Loading technologies…
-        </p>
+        <p className="text-slate-500 text-sm">Loading technologies…</p>
       </div>
     );
   }

@@ -1,53 +1,78 @@
 export default function TechCard({ tech, isAdded, onAdd }) {
-  const { name, category, description, icon, rating, difficulty, badge } =
-    tech;
+  const {
+    name,
+    category,
+    description,
+    icon,
+    rating,
+    difficulty,
+    badge,
+    iconBg,
+    badgeBg,
+    badgeBorder,
+    badgeText,
+  } = tech;
 
   return (
-    <div className="card bg-base-200 border border-base-300 hover:border-secondary/50 transition-colors">
-      <div className="card-body gap-3">
-        <div className="flex items-start justify-between">
+    <div className="rounded-2xl border border-slate-100 bg-white p-5 sm:p-6 flex flex-col hover:shadow-md hover:border-slate-200 transition-all">
+      <div className="flex items-start justify-between gap-3">
+        <div
+          className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
+          style={{ backgroundColor: iconBg }}
+        >
           <img
             src={icon}
             alt={`${name} icon`}
-            className="w-11 h-11 object-contain"
+            className="w-6 h-6 object-contain"
             loading="lazy"
             onError={(e) => {
               e.currentTarget.style.display = "none";
             }}
           />
-          {badge && (
-            <span className="badge badge-sm gradient-bg text-white border-none">
-              {badge}
-            </span>
-          )}
         </div>
-
-        <h3 className="card-title text-lg">{name}</h3>
-        <p className="text-sm text-base-content/70 leading-relaxed">
-          {description}
-        </p>
-
-        <div className="flex flex-wrap items-center gap-2 mt-1">
-          <span className="badge badge-outline badge-sm">{category}</span>
-          <span className="badge badge-ghost badge-sm">{difficulty}</span>
-          <span className="badge badge-ghost badge-sm gap-1">
-            <span aria-hidden="true">★</span>
-            {rating}
-          </span>
-        </div>
-
-        <div className="card-actions mt-3">
-          <button
-            className={`btn btn-sm w-full ${
-              isAdded ? "btn-disabled" : "btn-gradient"
-            }`}
-            onClick={() => onAdd(tech)}
-            disabled={isAdded}
+        {badge && (
+          <span
+            className="text-xs font-medium px-2.5 py-1 rounded-full border whitespace-nowrap"
+            style={{
+              backgroundColor: badgeBg,
+              borderColor: badgeBorder,
+              color: badgeText,
+            }}
           >
-            {isAdded ? "✓ Added to Stack" : "Add to Stack"}
-          </button>
-        </div>
+            {badge}
+          </span>
+        )}
       </div>
+
+      <h3 className="mt-4 text-lg font-bold text-slate-900">{name}</h3>
+      <p className="mt-2 text-sm text-slate-500 leading-relaxed flex-1">
+        {description}
+      </p>
+
+      <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+        <span className="bg-slate-100/80 text-slate-600 px-2.5 py-1 rounded-full font-medium">
+          {category}
+        </span>
+        <span className="text-slate-500">{difficulty}</span>
+        <span className="flex items-center gap-1 text-slate-700 font-medium">
+          <span style={{ color: "#f59e0b" }} aria-hidden="true">
+            ★
+          </span>
+          {rating}
+        </span>
+      </div>
+
+      <button
+        className={`mt-4 w-full rounded-lg py-2.5 text-sm font-semibold transition-colors ${
+          isAdded
+            ? "bg-slate-100 text-slate-400 cursor-not-allowed"
+            : "btn-dark"
+        }`}
+        onClick={() => onAdd(tech)}
+        disabled={isAdded}
+      >
+        {isAdded ? "✓ Added to Stack" : "Add to Stack"}
+      </button>
     </div>
   );
 }
