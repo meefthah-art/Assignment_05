@@ -57,17 +57,21 @@ export default function App() {
           </div>
 
           <div className="grid lg:grid-cols-[1fr_320px] gap-8 items-start">
-            <TechGrid
-              technologies={technologies}
-              isLoading={isLoading}
-              stackIds={stackIds}
-              onAdd={handleAddToStack}
-            />
-            <YourStack
-              stack={stack}
-              onRemove={handleRemoveFromStack}
-              onRemoveAll={handleRemoveAll}
-            />
+            <div className="order-2 lg:order-1">
+              <TechGrid
+                technologies={technologies}
+                isLoading={isLoading}
+                stackIds={stackIds}
+                onAdd={handleAddToStack}
+              />
+            </div>
+            <div className="order-1 lg:order-2">
+              <YourStack
+                stack={stack}
+                onRemove={handleRemoveFromStack}
+                onRemoveAll={handleRemoveAll}
+              />
+            </div>
           </div>
         </section>
       </main>
