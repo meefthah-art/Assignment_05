@@ -1,22 +1,42 @@
 import { useState } from "react";
 
-const NAV_LINKS = ["Home", "Technologies", "Projects", "About", "Contact"];
+const NAV_LINKS = [
+  { label: "Home", href: "#home", active: true },
+  { label: "Technologies", href: "#technologies" },
+  { label: "Projects", href: "#projects" },
+  { label: "About", href: "#about" },
+  { label: "Contact", href: "#contact" },
+];
+
+function Logo({ size = "md" }) {
+  const boxSize = size === "sm" ? "w-6 h-6" : "w-8 h-8";
+  const textSize = size === "sm" ? "text-base" : "text-xl";
+  return (
+    <a href="#home" className="flex items-center gap-2.5 shrink-0">
+      <span
+        className={`${boxSize} rounded-lg flex items-center justify-center shrink-0`}
+        style={{ backgroundImage: "linear-gradient(135deg, #ec4899, #7c3aed)" }}
+      >
+        <span className="text-white font-extrabold text-[11px] leading-none">
+          DS
+        </span>
+      </span>
+      <span className={`${textSize} font-bold text-slate-900 whitespace-nowrap`}>
+        Dev Stack
+      </span>
+    </a>
+  );
+}
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 bg-base-100/80 backdrop-blur border-b border-base-300">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Left: brand (desktop) */}
-        <a href="#home" className="hidden md:flex items-center gap-2">
-          <img src="/favicon.svg" alt="Dev Stack logo" className="w-8 h-8" />
-          <span className="text-lg font-bold gradient-text">Dev Stack</span>
-        </a>
-
+    <header className="sticky top-0 z-50 bg-white border-b border-slate-100">
+      <nav className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
         {/* Mobile: hamburger on the left */}
         <button
-          className="md:hidden btn btn-ghost btn-square"
+          className="md:hidden -ml-2 p-2 text-slate-700"
           aria-label="Toggle menu"
           onClick={() => setIsMenuOpen((prev) => !prev)}
         >
@@ -45,32 +65,38 @@ export default function Navbar() {
           </svg>
         </button>
 
-        {/* Mobile: brand centered */}
-        <a href="#home" className="md:hidden flex items-center gap-2">
-          <img src="/favicon.svg" alt="Dev Stack logo" className="w-7 h-7" />
-          <span className="font-bold gradient-text">Dev Stack</span>
-        </a>
+        {/* Logo: left on desktop, centered on mobile */}
+        <div className="md:flex-none flex-1 flex justify-center md:justify-start">
+          <Logo size="sm" />
+        </div>
 
-        {/* Center: nav links (desktop) */}
+        {/* Center: nav links (desktop only) */}
         <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
           {NAV_LINKS.map((link) => (
-            <li key={link}>
+            <li key={link.label}>
               <a
-                href={`#${link.toLowerCase()}`}
-                className="hover:text-secondary transition-colors"
+                href={link.href}
+                className={
+                  link.active
+                    ? "text-[#db2777] font-semibold"
+                    : "text-slate-600 hover:text-slate-900 transition-colors"
+                }
               >
-                {link}
+                {link.label}
               </a>
             </li>
           ))}
         </ul>
 
-        {/* Right: auth buttons (both breakpoints) */}
-        <div className="flex items-center gap-2 sm:gap-3">
-          <button className="btn btn-ghost btn-sm hidden sm:inline-flex">
+        {/* Right: auth controls */}
+        <div className="flex items-center gap-3 sm:gap-5 shrink-0">
+          <button className="hidden sm:inline-block text-sm font-medium text-slate-700 hover:text-slate-900">
             Sign In
           </button>
-          <button className="btn-gradient btn-sm rounded-full px-5">
+          <button
+            className="text-white text-sm font-semibold px-5 py-2.5 rounded-full"
+            style={{ backgroundColor: "#d91b7e" }}
+          >
             Sign Up
           </button>
         </div>
@@ -78,21 +104,23 @@ export default function Navbar() {
 
       {/* Mobile dropdown menu */}
       {isMenuOpen && (
-        <div className="md:hidden border-t border-base-300 bg-base-100 px-4 py-3">
-          <ul className="flex flex-col gap-3 text-sm font-medium">
+        <div className="md:hidden border-t border-slate-100 bg-white px-4 py-3">
+          <ul className="flex flex-col gap-1 text-sm font-medium">
             {NAV_LINKS.map((link) => (
-              <li key={link}>
+              <li key={link.label}>
                 <a
-                  href={`#${link.toLowerCase()}`}
-                  className="block py-1 hover:text-secondary transition-colors"
+                  href={link.href}
+                  className={`block py-2 ${
+                    link.active ? "text-[#db2777] font-semibold" : "text-slate-600"
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {link}
+                  {link.label}
                 </a>
               </li>
             ))}
-            <li className="sm:hidden pt-2">
-              <button className="btn btn-ghost btn-sm w-full">Sign In</button>
+            <li className="sm:hidden pt-1">
+              <button className="py-2 text-slate-700">Sign In</button>
             </li>
           </ul>
         </div>
