@@ -12,7 +12,10 @@ displays each one as a card with its rating, difficulty level, category,
 and a short description, and lets the user add or remove items from a
 "Your Stack" panel with instant toast feedback. The whole UI is themed
 around a single orange → pink → violet gradient defined in one place, so
-re-theming the site is a one-line change.
+re-theming the site is a one-line change. The layout, copy, colors, and
+card structure follow the provided DevStack Penpot design file, including
+its exact gradient stops, badge colors, and the empty/filled states of
+the stack sidebar.
 
 ## 🛠️ Technologies Used
 
