@@ -1,14 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /*
-  Single source of truth for the brand gradient.
-  Update this one variable to re-theme the whole site
-  (brand name, hero highlight, primary buttons all read from it).
+  Single source of truth for the brand gradient (orange -> pink -> violet),
+  matched to the DevStack Penpot design.
+  Update this one variable to re-theme the whole site — the brand mark,
+  the hero highlight, the section accent, and every primary button all
+  read from it.
 */
 :root {
-  --brand-gradient: linear-gradient(90deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+  --brand-gradient: linear-gradient(90deg, #ff5722 0%, #d81b7e 50%, #7c3aed 100%);
+}
+
+* {
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
 
 @layer components {
@@ -31,6 +39,15 @@
   .btn-gradient:hover {
     filter: brightness(1.08);
   }
+
+  .btn-dark {
+    @apply btn border-none text-white;
+    background-color: #0a0f1d;
+  }
+
+  .btn-dark:hover {
+    background-color: #1f2937;
+  }
 }
 
 html {
@@ -38,5 +55,6 @@ html {
 }
 
 body {
-  @apply bg-base-100 text-base-content;
+  background-color: #ffffff;
+  color: #0f172a;
 }
