@@ -109,5 +109,5 @@ For sending information back to the parent, the parent can pass a function as a 
 
 ## Submission
 
-- **GitHub Repository Link:** _add after pushing to GitHub_
-- **Live Site Link:** _add after deploying to Vercel/Netlify/Cloudflare Pages_
+GitHub Repository Link: https://github.com/meefthah-art/Assignment_05.git
+Live Site Link: https://inquisitive-daffodil-f67a8c.netlify.app
