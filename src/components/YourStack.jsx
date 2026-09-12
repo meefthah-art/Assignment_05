@@ -4,6 +4,7 @@ export default function YourStack({ stack, onRemove, onRemoveAll }) {
   return (
     <aside className="rounded-2xl border border-slate-100 bg-white p-5 sm:p-6 lg:sticky lg:top-24">
       <h2 className="text-lg font-bold text-slate-900">Your Stack</h2>
+
       <p className="mt-1 text-sm text-slate-500">
         {count} {count === 1 ? "Technology" : "Technologies"} Selected
       </p>
@@ -37,12 +38,14 @@ export default function YourStack({ stack, onRemove, onRemoveAll }) {
                     }}
                   />
                 </div>
+
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold text-sm text-slate-900 truncate">
                     {item.name}
                   </p>
                   <p className="text-xs text-slate-500">{item.category}</p>
                 </div>
+
                 <button
                   className="text-slate-400 hover:text-slate-600 w-6 h-6 flex items-center justify-center shrink-0"
                   aria-label={`Remove ${item.name} from stack`}

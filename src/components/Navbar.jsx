@@ -11,6 +11,7 @@ const NAV_LINKS = [
 function Logo({ size = "md" }) {
   const boxSize = size === "sm" ? "w-6 h-6" : "w-8 h-8";
   const textSize = size === "sm" ? "text-base" : "text-xl";
+
   return (
     <a href="#home" className="flex items-center gap-2.5 shrink-0">
       <span
@@ -21,7 +22,10 @@ function Logo({ size = "md" }) {
           DS
         </span>
       </span>
-      <span className={`${textSize} font-bold text-slate-900 whitespace-nowrap`}>
+
+      <span
+        className={`${textSize} font-bold text-slate-900 whitespace-nowrap`}
+      >
         Dev Stack
       </span>
     </a>
@@ -34,7 +38,6 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white border-b border-slate-100">
       <nav className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
-        {/* Mobile: hamburger on the left */}
         <button
           className="md:hidden -ml-2 p-2 text-slate-700"
           aria-label="Toggle menu"
@@ -65,12 +68,10 @@ export default function Navbar() {
           </svg>
         </button>
 
-        {/* Logo: left on desktop, centered on mobile */}
         <div className="md:flex-none flex-1 flex justify-center md:justify-start">
           <Logo size="sm" />
         </div>
 
-        {/* Center: nav links (desktop only) */}
         <ul className="hidden md:flex items-center gap-8 text-sm font-medium">
           {NAV_LINKS.map((link) => (
             <li key={link.label}>
@@ -88,11 +89,11 @@ export default function Navbar() {
           ))}
         </ul>
 
-        {/* Right: auth controls */}
         <div className="flex items-center gap-3 sm:gap-5 shrink-0">
           <button className="hidden sm:inline-block text-sm font-medium text-slate-700 hover:text-slate-900">
             Sign In
           </button>
+
           <button
             className="text-white text-sm font-semibold px-5 py-2.5 rounded-full"
             style={{ backgroundColor: "#d91b7e" }}
@@ -102,7 +103,6 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile dropdown menu */}
       {isMenuOpen && (
         <div className="md:hidden border-t border-slate-100 bg-white px-4 py-3">
           <ul className="flex flex-col gap-1 text-sm font-medium">
@@ -111,7 +111,9 @@ export default function Navbar() {
                 <a
                   href={link.href}
                   className={`block py-2 ${
-                    link.active ? "text-[#db2777] font-semibold" : "text-slate-600"
+                    link.active
+                      ? "text-[#db2777] font-semibold"
+                      : "text-slate-600"
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -119,6 +121,7 @@ export default function Navbar() {
                 </a>
               </li>
             ))}
+
             <li className="sm:hidden pt-1">
               <button className="py-2 text-slate-700">Sign In</button>
             </li>
